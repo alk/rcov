@@ -99,8 +99,10 @@ static void
 coverage_increase_counter_cached(char *sourcefile, int sourceline)
 {
  if(cached_file == sourcefile && cached_array) {
-         cached_array->ptr[sourceline]++;
-         return;
+   if (sourceline < cached_array->len) {
+     cached_array->ptr[sourceline]++;
+   }
+   return;
  }
  cached_file = sourcefile;
  cached_array = coverage_increase_counter_uncached(sourcefile, sourceline, 0);
