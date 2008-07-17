@@ -754,7 +754,7 @@ if __FILE__ == $0
 
   methods.each do |method|
     2.times{ puts "-" * 42 }
-    puts(table.send(method).pretty)
+    puts(table.send(method).to_s)
     puts
   end
 
